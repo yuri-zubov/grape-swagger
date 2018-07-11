@@ -308,7 +308,7 @@ module Grape
         param_type = options[:type]
         param_type = param_type.to_s unless param_type.nil?
         array_key = name.to_s if param_type_is_array?(param_type)
-        options[:is_array] = true if array_key && name.start_with?(array_key)
+        options[:is_array] = true if array_key && name.start_with?(array_key) && name != array_key
         memo[name] = options unless %w[Hash Array].include?(param_type) && !options.key?(:documentation)
       end
     end
